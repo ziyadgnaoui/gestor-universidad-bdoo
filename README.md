@@ -53,7 +53,7 @@ You can create and list campuses, faculties, courses, professors and students, p
 
 1. Clone this repository:  
    ```bash
-   git clone https://github.com/your-username/gestor-universidad-bdoo.git
+   git clone https://github.com/ziyadgnaoui/gestor-universidad-bdoo.git
    cd gestor-universidad-bdoo
 
 2. (Optional) Create and activate a virtual environment:
