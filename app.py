@@ -40,7 +40,7 @@ def main():
         transaction.commit()
 
     root_tk = tk.Tk()
-    root_tk.title("Gestion Université (BDOO)")
+    root_tk.title("Gestión Universitaria (BDOO)")
     MainWindow(root_tk, root)
     root_tk.mainloop()
 

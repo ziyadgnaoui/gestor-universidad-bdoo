@@ -21,9 +21,6 @@ matematicas = Faculty("FACULTAD DE MATEMÁTICAS", "US09", campus=RM)
 #Creation of professors and courses
 
 
-prof1 = Professor("Dr. Nieves", "P001", ["MVG"])
-prof2 = Professor("Dr. Johnson", "P002", ["IA"])
-
 # Asignaturas de la ETSII
 CBD = Course("CBD", "C001")
 SI = Course("SI", "C002")
@@ -31,6 +28,8 @@ IA = Course("IA", "C016")
 GE = Course("GE", "C017")
 MVG = Course("MVG", "C018")
 
+prof1 = Professor("Dr. Nieves", "P001", ["MVG"])
+prof2 = Professor("Dr. Johnson", "P002", ["IA"])
 
 prof3 = Professor("Dr. Octavio", "P003", [CBD])
 prof4 = Professor("Dr. Maria Teresa", "P004")
@@ -68,20 +67,20 @@ Python = Course("Introduction to Python", "C004")
 DE = Course("Derecho Empresarial", "C013")
 RGPD = Course("RGPD", "C014")
 
-# Asignaturas de la facultad de derecho
+# Asignaturas de la facultad de bilogía
 CO = Course("Química Orgánica", "C015")
 
 #Creation of students
 
 ziyad = Student("Ziyad", "S001", year=4, erasmus=True, courses=[CBD, SI, IA, GE, MVG], faculty=etsii)
-bruno = Student("Bruno", "S002", year=4, erasmus=True, faculty=etsii)
-franco = Student("Franco", "S003", year=4, erasmus=True, faculty=etsii)
-simon = Student("Simon", "S004", year=3, erasmus=True, faculty=filologia)
-mido = Student("Mido", "S005", faculty=tur_fin) 
-samia = Student("Samia", "S006", year=2, faculty=eco)
-alberto = Student("Alberto", "S007", year=3, faculty=etsi)
-paloma = Student("Paloma", "S008", year=5, faculty=matematicas)
-lotta = Student("Lotta", "S009", year=4, erasmus=True, faculty=derecho)
-nisrine = Student("Nisrine", "S010", year=3, faculty=biologia)
+bruno = Student("Bruno", "S002", year=4, erasmus=True, faculty=etsii, courses=[CBD, Python])
+franco = Student("Franco", "S003", year=4, erasmus=True, faculty=etsii, courses=[CBD, Python])
+simon = Student("Simon", "S004", year=3, erasmus=True, faculty=filologia, courses=[Espanol, Ingles])
+mido = Student("Mido", "S005", faculty=tur_fin, courses=[Finanzas, Com]) 
+samia = Student("Samia", "S006", year=2, faculty=eco, courses=[Marketing, Com])
+alberto = Student("Alberto", "S007", year=3, faculty=etsi, courses=[Elec])
+paloma = Student("Paloma", "S008", year=5, faculty=matematicas, courses=[Optim, Geom, Maths])
+lotta = Student("Lotta", "S009", year=4, erasmus=True, faculty=derecho, courses=[DE, RGPD])
+nisrine = Student("Nisrine", "S010", year=3, faculty=biologia, courses=[CO])
 pedro = Student("Pedro", "S011", year=5, faculty=etsa)
 

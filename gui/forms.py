@@ -108,20 +108,54 @@ class CourseForm(tk.Toplevel):
 class ProfessorForm(tk.Toplevel):
     def __init__(self, master, root):
         super().__init__(master)
+        self.root = root
         self.title("Nouveau Professor")
         self.result = None
-        ttk.Label(self, text="Nom  :").grid(row=0,column=0)
-        self.ent_name = ttk.Entry(self); self.ent_name.grid(row=0,column=1)
-        ttk.Label(self, text="ID   :").grid(row=1,column=0)
-        self.ent_id   = ttk.Entry(self); self.ent_id.grid(row=1,column=1)
-        ttk.Button(self, text="Annuler", command=self.destroy).grid(row=2,column=0)
-        ttk.Button(self, text="OK",      command=self.on_ok).grid(row=2,column=1)
+
+        # -- Name --
+        ttk.Label(self, text="Nom       :").grid(row=0, column=0, sticky="e", padx=5, pady=2)
+        self.ent_name = ttk.Entry(self)
+        self.ent_name.grid(row=0, column=1, sticky="w", padx=5, pady=2)
+
+        # -- ID --
+        ttk.Label(self, text="ID        :").grid(row=1, column=0, sticky="e", padx=5, pady=2)
+        self.ent_id = ttk.Entry(self)
+        self.ent_id.grid(row=1, column=1, sticky="w", padx=5, pady=2)
+
+        # -- Existing courses listbox --
+        ttk.Label(self, text="Select courses:").grid(row=2, column=0, sticky="ne", padx=5, pady=2)
+        self.lst_courses = tk.Listbox(self, selectmode="multiple", height=6, exportselection=False)
+        for c in root['courses']:
+            self.lst_courses.insert("end", c.name)
+        self.lst_courses.grid(row=2, column=1, sticky="w", padx=5, pady=2)
+
+        # -- Other course entry --
+        ttk.Label(self, text="Other course:").grid(row=3, column=0, sticky="e", padx=5, pady=2)
+        self.ent_other = ttk.Entry(self)
+        self.ent_other.grid(row=3, column=1, sticky="w", padx=5, pady=2)
+
+        # -- Buttons --
+        btn_cancel = ttk.Button(self, text="Annuler", command=self.destroy)
+        btn_cancel.grid(row=4, column=0, padx=5, pady=8)
+        btn_ok     = ttk.Button(self, text="OK",      command=self.on_ok)
+        btn_ok.grid(row=4, column=1, padx=5, pady=8)
 
     def on_ok(self):
+        name = self.ent_name.get().strip()
+        prof_id = self.ent_id.get().strip()
+
+        # gather selected existing courses
+        selected = [ self.lst_courses.get(i) for i in self.lst_courses.curselection() ]
+
+        # include other course if provided
+        other = self.ent_other.get().strip()
+        if other:
+            selected.append(other)
+
         self.result = {
-            'name':         self.ent_name.get().strip(),
-            'professor_id': self.ent_id.get().strip(),
-            'courses':      []  # plus tard, choisir dans root['courses']
+            'name':         name,
+            'professor_id': prof_id,
+            'courses':      selected
         }
         self.destroy()
 
