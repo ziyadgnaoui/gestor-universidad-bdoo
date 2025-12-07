@@ -1,6 +1,6 @@
 # gestor-universidad-bdoo
 
-University Management Mini-App (OODB) for the “Complementos de Bases de Datos” course  
+University Management Mini-App (OODB) 
 Author: Ziyad Gnaoui
 
 ---
